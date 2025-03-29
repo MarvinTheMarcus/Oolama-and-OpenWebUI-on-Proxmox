@@ -1,0 +1,31 @@
+name: Build & Release Ollama OpenWebUI Setup
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    name: Build .deb & Create Release
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build .deb package
+        run: |
+          dpkg-deb --build proxmox-ollama-openwebui-setup
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          tag_name: ${{ github.ref_name }}
+          name: "Release ${{ github.ref_name }}"
+          body: |
+            🪐 Automated release of Ollama + OpenWebUI Setup for Proxmox
+            Model selection, installation & integration script.
+          files: |
+            ./proxmox-ollama-openwebui-setup.deb
