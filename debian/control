@@ -1,0 +1,9 @@
+Package: proxmox-ollama-openwebui
+Version: 1.0-1
+Section: admin
+Priority: optional
+Architecture: all
+Depends: curl, jq
+Maintainer: Your Name <you@example.com>
+Description: Automated Proxmox Ollama & OpenWebUI Installer
+ Installs Ollama, pulls model, and configures OpenWebUI to connect.

@@ -1,0 +1,2 @@
+#!/bin/bash
+bash /usr/local/share/proxmox-ollama-openwebui/setup-ollama-openwebui.sh
